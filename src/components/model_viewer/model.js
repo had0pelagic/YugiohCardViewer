@@ -6,7 +6,7 @@ import { DoubleSide } from "three";
 export default function Model({ image, position, scale, card_geometry }) {
   const ref = useRef();
   const texture = useTexture(image);
-  useFrame(() => (ref.current.rotation.y += 0.0005));
+  useFrame(() => (ref.current.rotation.y += 0.001));
 
   return (
     <>
