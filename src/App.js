@@ -68,35 +68,39 @@ export default function App() {
         {loading ? (
           <Loader />
         ) : (
-          <div className="main_page">
-            <div className="container" id="left_container">
-              <div className="description_panel">
+          <div className="main_grid">
+            <div className="grid_container" id="left_container">
+              <div className="description_container">
                 {card.desc ? (
-                  <div>
-                    <p className="description">{card.desc}</p>
-                  </div>
+                  <>
+                    <p className="description_text">{card.desc}</p>
+                  </>
                 ) : (
                   <></>
                 )}
               </div>
             </div>
-            <div className="container" id="center_container">
-              <div className="viewer_panel">
+
+            <div className="grid_container" id="center_container">
+              <div className="viewer_container">
                 <ModelViewer image={card.card_images[0].image_url} />
               </div>
             </div>
-            <div className="container" id="right_container">
+
+            <div className="grid_container" id="right_container">
               {card && !effect_cards.includes(card.type) ? (
-                <div className="information_panel" id="monster_card">
+                <div className="information_container" id="monster_card">
                   <div>{card.name}</div>
                   {card.level ? (
                     <div className="level_wrapper">
                       <p>Level: {card.level}</p>
-                      <img
-                        src={Star}
-                        alt="Level star"
-                        className="level_image"
-                      />
+                      <div className="level_image_container">
+                        <img
+                          src={Star}
+                          alt="Level star"
+                          className="level_image"
+                        />
+                      </div>
                     </div>
                   ) : (
                     <></>
@@ -111,11 +115,13 @@ export default function App() {
                   {card.attribute ? (
                     <div className="attribute_wrapper">
                       <p>Attribute: {card.attribute}</p>
-                      <img
-                        src={attribute_images[card.attribute.toUpperCase()]}
-                        alt="Card level"
-                        className="attribute_image"
-                      />
+                      <div className="attribute_image_container">
+                        <img
+                          src={attribute_images[card.attribute.toUpperCase()]}
+                          alt="Card level"
+                          className="attribute_image"
+                        />
+                      </div>
                     </div>
                   ) : (
                     <></>
@@ -131,7 +137,7 @@ export default function App() {
                   )}
                 </div>
               ) : (
-                <div className="information_panel" id="effect_card">
+                <div className="information_container" id="effect_card">
                   <div>
                     <p>Name: {card.name}</p>
                   </div>
