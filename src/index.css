@@ -94,11 +94,11 @@ code {
 .information_container {
   display: grid;
   text-align: left;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
 }
 
 #information_grid {
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
 }
 
 #monster_card {
@@ -160,4 +160,113 @@ code {
 .grid_item {
   height: 0px;
   margin-bottom: 5px;
+}
+
+@media (max-width: 1310px) {
+  .main_grid {
+    grid-template-columns: 1fr;
+  }
+
+  #left_container {
+    margin: 20px;
+  }
+
+  #center_container {
+    margin: 20px;
+  }
+
+  #right_container {
+    margin: 20px;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_container {
+  margin: 0px 20px 20px 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}
+
+.action_grid {
+  padding: 0.5em;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 33% 33% 33%;
+  justify-content: center;
+  align-items: center;
+}
+.action_left_container {
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_center_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_right_container {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_button {
+  font-family: "Nuosu SIL";
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.action_button:hover {
+  background-color: rgb(47, 47, 47);
+}
+
+.search_input {
+  border: 1px solid white;
+  border-radius: 2px;
+  font-family: "Nuosu SIL";
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.search_input:focus {
+  outline: none;
+  border: 1px solid rgb(157, 157, 157);
+}
+
+.search_form {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.select {
+  font-family: "Nuosu SIL";
+  font-size: 20px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
 }
