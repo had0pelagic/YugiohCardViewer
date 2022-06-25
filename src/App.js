@@ -17,6 +17,7 @@ import Virus from "./files/images/VIRUS.png";
 import Water from "./files/images/WATER.png";
 import Wind from "./files/images/WIND.png";
 import Star from "./files/images/Star.png";
+import { FileDownload } from "./util/file_download";
 
 export default function App() {
   const [card, setCard] = useState({});
@@ -91,7 +92,6 @@ export default function App() {
         })
         .sort((a, b) => (a.rank > b.rank ? 1 : -1));
 
-      console.log(topRarity[0].name);
       setMaxRarity(topRarity[0]);
     } else {
       setMaxRarity(CardRarities[0]);
@@ -126,7 +126,12 @@ export default function App() {
             <div className="main_grid">
               {CardDescriptionContainer(card)}
               {CenterContainer(maxRarity, card)}
-              {CardInformationContainer(card, effect_cards, attribute_images)}
+              {CardInformationContainer(
+                card,
+                effect_cards,
+                attribute_images,
+                maxRarity
+              )}
             </div>
             <div className="action_container">
               {ActionContainer(
@@ -138,6 +143,7 @@ export default function App() {
                 searchForm,
                 cards
               )}
+              {CardInformationActionContainer(getRandomCard, card)}
             </div>
           </div>
         )}
@@ -260,7 +266,38 @@ function ActionContainer(
   );
 }
 
-function CardInformationContainer(card, effect_cards, attribute_images) {
+function CardInformationActionContainer(getRandomCard, card) {
+  return (
+    <div className="action_card_information_grid">
+      <div className="action_card_information_left_container">
+        <button
+          className="action_button"
+          onClick={() =>
+            FileDownload.downloadImage(card.card_images[0].image_url, card.name)
+          }
+        >
+          Download image
+        </button>
+      </div>
+
+      <div className="action_card_information_right_container">
+        <button
+          className="action_button"
+          onClick={() => FileDownload.downloadCardInformation(card)}
+        >
+          Download card information txt
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function CardInformationContainer(
+  card,
+  effect_cards,
+  attribute_images,
+  maxRarity
+) {
   return (
     <div className="grid_container" id="right_container">
       {card && !effect_cards.includes(card.type) ? (
@@ -302,6 +339,13 @@ function CardInformationContainer(card, effect_cards, attribute_images) {
               <p>
                 ATK/{card.atk} DEF/{card.def}
               </p>
+            </div>
+          ) : (
+            <></>
+          )}
+          {maxRarity ? (
+            <div>
+              <p>Max set rarity: {maxRarity.name}</p>
             </div>
           ) : (
             <></>

@@ -78,6 +78,7 @@ code {
 
 .description_container {
   padding: 20px;
+  font-size: large;
 }
 
 .description_text {
@@ -98,6 +99,7 @@ code {
   display: grid;
   text-align: left;
   padding: 20px;
+  font-size: large;
 }
 
 #information_grid {
@@ -181,6 +183,14 @@ code {
   #right_container {
     margin: 20px;
   }
+
+  .action_container {
+    width: 455px;
+  }
+
+  .action_card_information_grid {
+    width: 455px;
+  }
 }
 
 .main {
@@ -193,10 +203,8 @@ code {
 .action_container {
   margin: 0px 20px 20px 20px;
   border-style: solid;
-  border-width: 1px;
   border-color: white;
   border-radius: 16px;
-  border-width: 4px;
 }
 
 .action_grid {
@@ -207,6 +215,7 @@ code {
   justify-content: center;
   align-items: center;
 }
+
 .action_left_container {
   margin-right: 20px;
   display: flex;
@@ -231,7 +240,7 @@ code {
   font-family: "Nuosu SIL";
   font-size: 20px;
   border: 1px solid white;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: black;
   color: white;
   padding: 4px;
@@ -244,7 +253,7 @@ code {
 
 .search_input {
   border: 1px solid white;
-  border-radius: 2px;
+  border-radius: 4px;
   font-family: "Nuosu SIL";
   font-size: 20px;
   background-color: black;
@@ -268,6 +277,7 @@ code {
   font-family: "Nuosu SIL";
   font-size: 20px;
   border: 1px solid white;
+  border-radius: 4px;
   background-color: black;
   color: white;
   display: flex;
@@ -284,4 +294,26 @@ code {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.action_card_information_grid {
+  padding: 0.5em;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 33% 33% 33%;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_card_information_left_container {
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action_card_information_right_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
