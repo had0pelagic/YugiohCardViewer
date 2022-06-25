@@ -245,6 +245,7 @@ code {
   color: white;
   padding: 4px;
   cursor: pointer;
+  width: 210px;
 }
 
 .action_button:hover {

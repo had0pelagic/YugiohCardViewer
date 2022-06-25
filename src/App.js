@@ -18,9 +18,11 @@ import Water from "./files/images/WATER.png";
 import Wind from "./files/images/WIND.png";
 import Star from "./files/images/Star.png";
 import { FileDownload } from "./util/file_download";
+import CardBackside from "./files/images/card_backside.png";
 
 export default function App() {
   const [card, setCard] = useState({});
+  const [cardImage, setCardImage] = useState();
   const [cards, setCards] = useState([]);
   const [searchForm, setSearchForm] = useState({
     name: "",
@@ -51,6 +53,8 @@ export default function App() {
 
     if (response.status === 200) {
       setCard(response.data);
+      var image = response.data.card_images[0].image_url;
+      !image ? setCardImage(CardBackside) : setCardImage(image);
       getMaxRarity(response.data);
     } else {
       alert(response.data);
@@ -125,7 +129,7 @@ export default function App() {
           <div className="main">
             <div className="main_grid">
               {CardDescriptionContainer(card)}
-              {CenterContainer(maxRarity, card)}
+              {CenterContainer(maxRarity, cardImage)}
               {CardInformationContainer(
                 card,
                 effect_cards,
@@ -143,7 +147,7 @@ export default function App() {
                 searchForm,
                 cards
               )}
-              {CardInformationActionContainer(getRandomCard, card)}
+              {CardInformationActionContainer(card, cardImage)}
             </div>
           </div>
         )}
@@ -204,11 +208,11 @@ function CardDescriptionContainer(card) {
   );
 }
 
-function CenterContainer(maxRarity, card) {
+function CenterContainer(maxRarity, cardImage) {
   return (
     <CenterGridContainer rarity={maxRarity}>
       <div className="viewer_container">
-        <ModelViewer image={card.card_images[0].image_url} />
+        <ModelViewer image={cardImage} />
       </div>
     </CenterGridContainer>
   );
@@ -266,15 +270,13 @@ function ActionContainer(
   );
 }
 
-function CardInformationActionContainer(getRandomCard, card) {
+function CardInformationActionContainer(card, cardImage) {
   return (
     <div className="action_card_information_grid">
       <div className="action_card_information_left_container">
         <button
           className="action_button"
-          onClick={() =>
-            FileDownload.downloadImage(card.card_images[0].image_url, card.name)
-          }
+          onClick={() => FileDownload.downloadImage(cardImage, card.name)}
         >
           Download image
         </button>
@@ -285,7 +287,7 @@ function CardInformationActionContainer(getRandomCard, card) {
           className="action_button"
           onClick={() => FileDownload.downloadCardInformation(card)}
         >
-          Download card information txt
+          Download information
         </button>
       </div>
     </div>
